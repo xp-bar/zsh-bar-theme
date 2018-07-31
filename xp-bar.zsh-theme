@@ -1,0 +1,31 @@
+# Theme with full path names and hostname
+# Handy if you work on different servers all the time;
+prompt_end() {
+  printf "\n$ ";
+}
+
+function get_right_prompt() {
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        echo -n "$(git_prompt_short_sha)%{$reset_color%}"
+    else
+        echo -n "%{$reset_color%}"
+    fi
+}
+
+
+eval light_yellow='$FG[227]'
+eval git_info_color='$fg[red]'
+
+#PROMPT='%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}$(prompt_end)'
+#RPROMPT='%@'
+
+PROMPT='%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}$(prompt_end)'
+RPROMPT='$(get_right_prompt)'
+
+#PROMPT='# '
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$git_info_color%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$git_info_color%})%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
+
