@@ -1,7 +1,8 @@
 # Theme with full path names and hostname
 # Handy if you work on different servers all the time;
 prompt_end() {
-  printf "\n$ ";
+  # printf "\n$ ";
+  printf "\n\u27A4 ";
 }
 
 function get_right_prompt() {
