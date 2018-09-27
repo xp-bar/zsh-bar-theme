@@ -6,20 +6,12 @@ prompt_end() {
 
 function get_right_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
-        if git rev-parse --git-dir > /dev/null 2>&1; then
-            echo -n "%{$fg[blue]%}%@ %{$bg[green]%}%{$fg[black]%} $(git_prompt_short_sha) %{$reset_color%}"
-        else
-            echo -n "%{$fg[red]%}%@%{$reset_color%}"
-        fi
+        echo -n "%{$fg[red]%}%@%{$reset_color%}"
     fi
 }
 
 function get_left_prompt() {
-    if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}"
-    else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}%{$reset_color%}"
-    fi
+    echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}%{$reset_color%}"
 }
 
 
