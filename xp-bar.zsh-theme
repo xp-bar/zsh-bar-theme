@@ -5,9 +5,6 @@ prompt_end() {
 }
 
 function get_right_prompt() {
-    if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[red]%}%@%{$reset_color%}"
-    fi
 }
 
 function get_left_prompt() {
