@@ -1,12 +1,12 @@
 # Theme with full path names and hostname
 # Handy if you work on different servers all the time;
 prompt_end() {
-  # printf "\n$ ";
-  printf "\n ";
+  printf "\n$ ";
+  # printf "\n ";
 }
 
 function get_right_prompt() {
-    [[ $(print -P "%#") == '#' ]] && echo -e "\uf503" || echo -e "\uf512"
+    # [[ $(print -P "%#") == '#' ]] && echo -e "\uf503" || echo -e "\uf512"
 }
 
 function get_left_prompt() {
@@ -15,7 +15,22 @@ function get_left_prompt() {
     else
         echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}%{$reset_color%}"
     fi
+}
 
+function get_platform_icon() {
+    if [ "$(uname)" == "Darwin" ]; then
+        # Do something under Mac OS X platform        
+        echo -e "\ue711";
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        # Do something under GNU/Linux platform
+        echo -e "\ue712";
+    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+        # Do something under 32 bits Windows NT platform
+        echo -e "\ue70f";
+    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+        # Do something under 64 bits Windows NT platform
+        echo -e "\ue70f";
+    fi
 }
 
 
