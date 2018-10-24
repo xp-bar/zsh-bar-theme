@@ -6,7 +6,7 @@ prompt_end() {
 }
 
 function get_right_prompt() {
-    printf "\uf503"
+    [[ $(print -P "%#") == '#' ]] && echo -e "\uf503" || echo -e "\uf512"
 }
 
 function get_left_prompt() {
