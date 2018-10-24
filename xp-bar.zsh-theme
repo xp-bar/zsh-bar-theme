@@ -6,6 +6,7 @@ prompt_end() {
 }
 
 function get_right_prompt() {
+    printf "\uf503"
 }
 
 function get_left_prompt() {
