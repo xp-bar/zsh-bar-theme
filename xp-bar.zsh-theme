@@ -5,10 +5,10 @@ prompt_end() {
   # printf "\n ";
 }
 
-MODE_INDICATOR="%{$fg_bold[red]%}[ -- INSERT -- ]%{$reset_color%}"
+MODE_INDICATOR="%{$fg_bold[red]%}[vi]%{$reset_color%}"
 
 function get_right_prompt() {
-   echo -e "$(vi_mode_prompt_info)" 
+   # echo -e "" 
 }
 
 function get_left_prompt() {
@@ -42,7 +42,7 @@ eval git_info_color='$fg[red]'
 #PROMPT='%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}$(prompt_end)'
 #RPROMPT='%@'
 
-PROMPT='$(get_left_prompt)$(prompt_end)'
+PROMPT='$(get_left_prompt)$(vi_mode_prompt_info)$(prompt_end)'
 RPROMPT='$(get_right_prompt)'
 
 #PROMPT='# '
