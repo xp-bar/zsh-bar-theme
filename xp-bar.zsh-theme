@@ -5,11 +5,8 @@ prompt_end() {
   # printf "\n ";
 }
 
-
-MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
-
 function get_right_prompt() {
-   echo -e "$(vi_mode_prompt_info)" 
+   echo -e "MODE: $(vi_mode_prompt_info)" 
 }
 
 function get_left_prompt() {
