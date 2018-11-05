@@ -8,7 +8,7 @@ prompt_end() {
 MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
 
 function get_right_prompt() {
-   echo -e "MODE: $(vi_mode_prompt_info)" 
+   echo -e "MODE: $MODE_INDICATOR" 
 }
 
 function get_left_prompt() {
@@ -43,7 +43,7 @@ eval git_info_color='$fg[red]'
 #RPROMPT='%@'
 
 PROMPT='$(get_left_prompt)$(prompt_end)'
-# RPROMPT='$(get_right_prompt)'
+RPROMPT='$(get_right_prompt)'
 
 #PROMPT='# '
 
