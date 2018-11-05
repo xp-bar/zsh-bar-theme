@@ -9,7 +9,7 @@ prompt_end() {
 MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
 
 function get_right_prompt() {
-   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}" 
+   echo -e "$(vi_mode_prompt_info)" 
 }
 
 function get_left_prompt() {
