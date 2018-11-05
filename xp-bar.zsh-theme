@@ -41,7 +41,7 @@ eval git_info_color='$fg[red]'
 #RPROMPT='%@'
 
 PROMPT='$(get_left_prompt)$(prompt_end)'
-RPROMPT='$(get_right_prompt)'
+# RPROMPT='$(get_right_prompt)'
 
 #PROMPT='# '
 
