@@ -5,8 +5,11 @@ prompt_end() {
   # printf "\n ";
 }
 
+
+MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
+
 function get_right_prompt() {
-    # [[ $(print -P "%#") == '#' ]] && echo -e "\uf503" || echo -e "\uf512"
+   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}" 
 }
 
 function get_left_prompt() {
