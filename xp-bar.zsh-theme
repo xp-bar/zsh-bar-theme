@@ -5,7 +5,7 @@ prompt_end() {
   # printf "\n ";
 }
 
-MODE_INDICATOR="%{$fg[white]%}[ NORMAL ]%{$reset_color%}"
+MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%} NORMAL ]%{$reset_color%}"
 MODE_INSERT_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
 
 function get_right_prompt() {
