@@ -5,7 +5,7 @@ prompt_end() {
   # printf "\n ";
 }
 
-MODE_INDICATOR="%{$fg_bold[black]$bg[red]%}[ NORMAL ]%{$reset_color%}"
+MODE_INDICATOR="%{$fg_bold[white]%}[ NORMAL ]%{$reset_color%}"
 
 function get_right_prompt() {
    # echo -e "" 
