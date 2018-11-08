@@ -1,33 +1,13 @@
-# Theme with full path names and hostname
-# Handy if you work on different servers all the time;
-prompt_end() {
-  printf "\n$ ";
-  # printf "\n ";
-}
+eval light_yellow='$FG[227]'
+eval git_info_color='$fg[red]'
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$git_info_color%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$git_info_color%})%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
 
 MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%} NORMAL %{$reset_color%}%{$fg[white]%}]%{$reset_color%}"
 MODE_INSERT_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
-
-function get_right_prompt() {
-   # echo -e "" 
-}
-
-function vi_mode_indicator() {
-    indicator="$(vi_mode_prompt_info)"
-    if [[ $indicator != "" ]]; then
-        echo $indicator
-    else
-        echo $MODE_INSERT_INDICATOR
-    fi
-}
-
-function get_left_prompt() {
-    if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_indicator)%{$reset_color%}"
-    else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_indicator)%{$reset_color%}"
-    fi
-}
 
 function get_platform_icon() {
     if [ "$(uname)" == "Darwin" ]; then
@@ -45,20 +25,31 @@ function get_platform_icon() {
     fi
 }
 
+function vi_mode_indicator() {
+    indicator="$(vi_mode_prompt_info)"
+    if [[ $indicator != "" ]]; then
+        echo $indicator
+    else
+        echo $MODE_INSERT_INDICATOR
+    fi
+}
 
-eval light_yellow='$FG[227]'
-eval git_info_color='$fg[red]'
+function get_left_prompt() {
+    if [[ $(tput cols) -ge 100 ]]; then
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}"
+    else
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}%{$reset_color%}"
+    fi
+}
+function get_right_prompt() {
+   echo "$(vi_mode_indicator)" 
+}
 
-#PROMPT='%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info)%{$reset_color%}$(prompt_end)'
-#RPROMPT='%@'
+prompt_end() {
+  printf "\n$ ";
+}
 
 PROMPT='$(get_left_prompt)$(prompt_end)'
 RPROMPT='$(get_right_prompt)'
 
-#PROMPT='# '
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$git_info_color%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$git_info_color%})%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
 
