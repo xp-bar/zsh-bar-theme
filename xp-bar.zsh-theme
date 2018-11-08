@@ -6,16 +6,26 @@ prompt_end() {
 }
 
 MODE_INDICATOR="%{$fg[white]%}[ NORMAL ]%{$reset_color%}"
+MODE_INSERT_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
 
 function get_right_prompt() {
    # echo -e "" 
 }
 
+function vi_mode_indicator() {
+    indicator=vi_mode_prompt_info
+    if [[ $indicator != "" ]]; then
+        echo $indicator
+    else
+        echo $MODE_INSERT_INDICATOR
+    fi
+}
+
 function get_left_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_prompt_info)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_indicator)%{$reset_color%}"
     else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_prompt_info)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_indicator)%{$reset_color%}"
     fi
 }
 
