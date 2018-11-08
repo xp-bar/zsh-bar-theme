@@ -13,7 +13,7 @@ function get_right_prompt() {
 }
 
 function vi_mode_indicator() {
-    indicator=vi_mode_prompt_info
+    indicator="$(vi_mode_prompt_info)"
     if [[ $indicator != "" ]]; then
         echo $indicator
     else
