@@ -29,8 +29,10 @@ function get_platform_icon() {
 function vi_mode_indicator() {
     indicator="$(vi_mode_prompt_info)"
     if [[ $indicator != "" ]]; then
+        echo -ne '\e[1 q'
         echo $indicator
     else
+        echo -ne '\e[5 q'
         echo $MODE_INSERT_INDICATOR
     fi
 }
