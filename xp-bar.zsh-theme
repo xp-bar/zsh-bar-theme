@@ -49,7 +49,8 @@ function get_right_prompt() {
 }
 
 prompt_end() {
-  printf "\n$ ";
+  # printf "\n$ ";
+  echo -e "\n\uf105";
 }
 
 PROMPT='$(get_left_prompt)$(prompt_end)'
