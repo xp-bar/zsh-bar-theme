@@ -10,22 +10,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
 MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%} NORMAL %{$reset_color%}%{$fg[white]%}]%{$reset_color%}"
 MODE_INSERT_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
 
-function get_platform_icon() {
-    if [ "$(uname)" == "Darwin" ]; then
-        # Do something under Mac OS X platform        
-        echo -e "\ue711";
-    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        # Do something under GNU/Linux platform
-        echo -e "\ue712";
-    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-        # Do something under 32 bits Windows NT platform
-        echo -e "\ue70f";
-    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-        # Do something under 64 bits Windows NT platform
-        echo -e "\ue70f";
-    fi
-}
-
 function vi_mode_indicator() {
     indicator="$(vi_mode_prompt_info)"
     if [[ $indicator != "" ]]; then
@@ -39,9 +23,9 @@ function vi_mode_indicator() {
 
 function get_left_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_indicator)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_indicator)%{$reset_color%}"
     else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}$(get_platform_icon) %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_indicator)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%M%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_indicator)%{$reset_color%}"
     fi
 }
 function get_right_prompt() {
