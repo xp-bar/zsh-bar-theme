@@ -3,7 +3,7 @@ eval light_yellow='$FG[227]'
 eval git_info_color='$fg[red]'
 
 local check_icon="$(echo -e "\uf42e")"
-local times_icon="$(echo -e "\uf665")"
+local times_icon="$(echo -e "\uf655")"
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$git_info_color%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$git_info_color%})%{$reset_color%}"
