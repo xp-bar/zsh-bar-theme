@@ -1,4 +1,4 @@
-# /bin/zsh
+#! /bin/zsh
 eval light_yellow='$FG[227]'
 eval git_info_color='$fg[red]'
 
@@ -36,11 +36,16 @@ function get_right_prompt() {
 }
 
 prompt_end() {
-  # printf "\n$ ";
+  local minute=`date +%M`
+  if [[ $(tput cols) -ge 100 ]]; then 
+    if [[ $minute -gt 40 ]] && [[ $minute -lt 50 ]] || [[ $minute -gt 20 ]] && [[ $minute -lt 30 ]] || [[ $minute -gt 0 ]] && [[ $minute -lt 10 ]]; then
+        echo -ne "%{$fg[cyan]%} Drink Water! %{$reset_color%}";
+    fi
+  fi
+
   echo -e "\n\uf105 ";
 }
 
 PROMPT='$(get_left_prompt)$(prompt_end)'
 RPROMPT='$(get_right_prompt)'
-
 
