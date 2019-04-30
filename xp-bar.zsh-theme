@@ -32,7 +32,7 @@ function get_left_prompt() {
     fi
 }
 function get_right_prompt() {
-   # echo "" 
+    git status 2 > /dev/null && echo "$(git remote -v | \grep fetch | sed 's/^[a-z]*[^a-z]*\([a-z]*.*\)[ ].*/\1/g' | sed 's/^git@github.com:\(.*\)\.git/\1/g')"
 }
 
 prompt_end() {
