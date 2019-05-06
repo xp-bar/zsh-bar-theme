@@ -3,6 +3,13 @@
 My personal zsh theme.
 In my opinion, looks best with some variant of the Atom One Dark theme (whichever works best with your terminal emulator).
 
+## Features
+- user, hostname and PWD
+- `[ INSERT ]` / `[ NORMAL ]` mode mappings for the zsh [vi-mode](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/vi-mode) plugin
+- current git branch
+- 3x an hour reminders to "`Drink Water!`"
+- current git repository on the right
+
 ## Screenshots
 
 Home directory:
