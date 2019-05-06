@@ -6,9 +6,11 @@ In my opinion, looks best with some variant of the Atom One Dark theme (whicheve
 ## Features
 - user, hostname and PWD
 - `[ INSERT ]` / `[ NORMAL ]` mode mappings for the zsh [vi-mode](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/vi-mode) plugin
-- current git branch
+- current git branch and clean/dirty status
 - 3x an hour reminders to "`Drink Water!`"
 - current git repository on the right
+
+NOTE: requires a [NerdFont](https://nerdfonts.com/) compatible font to display the check / X in the git status - you'll get squares otherwise. Originally I was using the check / x provided by OSX, but when switching to my windows machine, using the font I had installed was the easier solution at the time.
 
 ## Screenshots
 
