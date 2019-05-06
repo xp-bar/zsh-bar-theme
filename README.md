@@ -1,6 +1,6 @@
-# Zsh -- BAR Theme
+# zsh-bar theme
 
-My personal Zsh theme.
+My personal zsh theme.
 In my opinion, looks best with some variant of the Atom One Dark theme (whichever works best with your terminal emulator).
 
 ## Screenshots
@@ -11,9 +11,8 @@ Home directory:
 Other directories:
 ![image](https://user-images.githubusercontent.com/22773226/57203969-47a5f180-6f82-11e9-96f3-450b7658fb51.png)
 
-Drink Water!:
-
 Smaller Windows:
+![image](https://user-images.githubusercontent.com/22773226/57204006-820f8e80-6f82-11e9-8f97-64601d87eb90.png)
 
 Default Colors:
-
+![image](https://user-images.githubusercontent.com/22773226/57204034-c8fd8400-6f82-11e9-9a69-9f36648e5998.png)
