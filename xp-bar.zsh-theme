@@ -33,7 +33,7 @@ function get_left_prompt() {
 }
 function get_right_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
-        local STASH_NUMBER=$(git stash list | grep $(git rev-parse --abbrev-ref HEAD) | wc -l | sed 's: ::g')
+        local STASH_NUMBER=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "$(git stash list | grep $(git rev-parse --abbrev-ref HEAD) | wc -l | sed 's: ::g')")
         local GIT_REPO=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "$(git remote -v | \grep fetch | sed 's/^[a-z]*[^a-z]*\([a-z]*.*\)[ ].*/\1/g' | sed 's/^git@github.com:\(.*\)\.git/\1/g')")
 
         if [[ $STASH_NUMBER -gt 0 ]]; then
