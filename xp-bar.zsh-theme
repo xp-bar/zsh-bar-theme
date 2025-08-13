@@ -40,7 +40,7 @@ function get_right_prompt() {
 
         if [[ $STASH_NUMBER -gt 0 ]]; then
             echo "[$STASH_NUMBER] $GIT_REPO";
-        elif [[ -v $GIT_REPO ]]; then
+        elif [[ -n $GIT_REPO ]]; then
             echo "$GIT_REPO";
         else
             echo "(no remote)"
