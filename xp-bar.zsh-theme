@@ -16,6 +16,16 @@ MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%} NORMAL %{$reset_color%}%{$fg[
 INSERT_MODE_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
 
 function get_left_prompt() {
+    NORMAL_TEXT=" NORMAL "
+    INSERT_TEXT=" INSERT "
+    if [[ $(tput cols) -lt 80 ]]; then
+        NORMAL_TEXT="N"
+        INSERT_TEXT="I"
+    fi
+
+    MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%}$NORMAL_TEXT%{$reset_color%}%{$fg[white]%}]%{$reset_color%}"
+    INSERT_MODE_INDICATOR="%{$fg[white]%}[$INSERT_TEXT]%{$reset_color%}"
+
     if [[ $(tput cols) -ge 100 ]]; then
         echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_prompt_info)%{$reset_color%}"
     else
