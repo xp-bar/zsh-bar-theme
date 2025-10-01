@@ -13,24 +13,13 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}$check_icon%{$reset_color%}"
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 MODE_INDICATOR="%{$fg[white]%}[%{$fg_bold[white]%} NORMAL %{$reset_color%}%{$fg[white]%}]%{$reset_color%}"
-MODE_INSERT_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
-
-function vi_mode_indicator() {
-    indicator="$(vi_mode_prompt_info)"
-    if [[ $indicator != "" ]]; then
-        echo -ne '\e[1 q'
-        echo $indicator
-    else
-        echo -ne '\e[5 q'
-        echo $MODE_INSERT_INDICATOR
-    fi
-}
+INSERT_MODE_INDICATOR="%{$fg[white]%}[ INSERT ]%{$reset_color%}"
 
 function get_left_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_indicator)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_prompt_info)%{$reset_color%}"
     else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_indicator)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_prompt_info)%{$reset_color%}"
     fi
 }
 function get_right_prompt() {
