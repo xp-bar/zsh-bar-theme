@@ -29,13 +29,18 @@ function get_left_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
         echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%}$(git_prompt_info) $(vi_mode_prompt_info)%{$reset_color%}"
     else
-        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow%~%{$reset_color%}%{$reset_color%} $(vi_mode_prompt_info)%{$reset_color%}"
+        echo -n "%{$fg[green]%}%n %{$fg[yellow]%}@ %B%{$fg[cyan]%}%m%b $light_yellow$(shrink_path -l -t -s)%{$reset_color%}$(git_prompt_info) $(vi_mode_prompt_info)%{$reset_color%}"
     fi
 }
 function get_right_prompt() {
     if [[ $(tput cols) -ge 100 ]]; then
         local STASH_NUMBER=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "$(git stash list | grep $(git rev-parse --abbrev-ref HEAD 2>/dev/null) | wc -l | sed 's: ::g')")
-        local GIT_REPO=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "$(git remote -v | \grep fetch | sed 's/^[a-z]*[^a-z]*\([a-z]*.*\)[ ].*/\1/g' | sed 's/^git@github.com:\(.*\)\.git/\1/g')")
+        # local GIT_REPO=$(git rev-parse --git-dir > /dev/null 2>&1 && echo "$(git remote -v | \grep fetch | sed 's/^[a-z]*[^a-z]*\([a-z]*.*\)[ ].*/\1/g' | sed 's/^git@github.com:\(.*\)\.git/\1/g')")
+        # git_repo_name is a ohmyzsh builtin
+        local GIT_REPO=$(git_repo_name)
+        local STASH_NUMBER=$(git_prompt_status)
+        echo "[$STASH_NUMBER] $GIT_REPO";
+        return
 
         if [[ $STASH_NUMBER -gt 0 ]]; then
             echo "[$STASH_NUMBER] $GIT_REPO";
